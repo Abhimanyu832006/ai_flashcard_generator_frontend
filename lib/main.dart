@@ -1,20 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'services/auth_service.dart';
+import 'screens/auth/login_screen.dart';
 
 import 'providers/flashcard_provider.dart';
 import 'screens/home/home_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final isLoggedIn = await AuthService.isLoggedIn();
+
   runApp(
     MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_) => FlashcardProvider())],
-      child: const FlashcardAIApp(),
+      providers: [
+        ChangeNotifierProvider(create: (_) => FlashcardProvider()),
+      ],
+      child: FlashcardAIApp(isLoggedIn: isLoggedIn),
     ),
   );
 }
 
 class FlashcardAIApp extends StatelessWidget {
-  const FlashcardAIApp({super.key});
+  final bool isLoggedIn;
+
+  const FlashcardAIApp({super.key, required this.isLoggedIn});
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +52,7 @@ class FlashcardAIApp extends StatelessWidget {
     ),
   ),
 
-  home: const HomeScreen(),
+  home: isLoggedIn ? const HomeScreen() : const LoginScreen(),
 );
 
   }
