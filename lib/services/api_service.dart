@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:io' show Platform;
 import 'package:http/http.dart' as http;
 import 'package:file_picker/file_picker.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
 
 import '../models/flashcard_model.dart';
 import 'auth_service.dart';
