@@ -56,6 +56,44 @@ flutter_ai_app/
 │   └── main.dart       # Entry point
 │
 └── README.md
-⚙️ Setup & Installation1. Backend Setup (Local Server)Since the backend runs on PHP, it must be hosted on a server (like XAMPP).Copy Files: Copy the contents of the backend/ folder from this repo to your server's public folder (e.g., C:\xampp\htdocs\ai_flashcard_backend).Database:Import the SQL schema into phpMyAdmin (Database name: ai_flashcard_db).Configuration:Rename config/gemini.example.php to gemini.php and add your Gemini API Key.Ensure config/database.php has the correct MySQL credentials.Dependencies:Ensure pdftotext.exe is installed and the path in generate.php is correct.2. Frontend Setup (Flutter)Install Dependencies:Bashflutter pub get
-Configure API URL:Open lib/services/api_service.dart.Update baseUrl to match your local server IP:Android Emulator: http://10.0.2.2/ai_flashcard_backend/apiPhysical Device: http://YOUR_PC_IP/ai_flashcard_backend/apiRun the App:Bashflutter run
-🔌 API EndpointsMethodEndpointDescriptionPOST/auth/signup.phpRegister a new userPOST/auth/login.phpLogin and receive Auth TokenPOST/flashcards/generate.phpUpload PDF and generate cardsGET/flashcards/sets.phpGet list of user's saved setsGET/flashcards/get.phpGet Q&A pairs for a specific set⚠️ Important NotesSecurity: The backend/config/ folder containing API keys is excluded from version control via .gitignore. You must create these files manually on your server.PDF Support: Currently supports digital PDFs (selectable text). Scanned image PDFs are not yet supported.👤 AuthorAbhimanyu SinghFull Stack Developer (Flutter & PHP)
+________________________________________
+⚙️ Setup & Installation
+1. Backend Setup (Local Server)
+Since the backend runs on PHP, it must be hosted on a server (like XAMPP).
+1.	Copy Files: Copy the contents of the backend/ folder from this repo to your server's public folder (e.g., C:\xampp\htdocs\ai_flashcard_backend).
+2.	Database:
+o	Import the SQL schema into phpMyAdmin (Database name: ai_flashcard_db).
+3.	Configuration:
+o	Rename config/gemini.example.php to gemini.php and add your Gemini API Key.
+o	Ensure config/database.php has the correct MySQL credentials.
+4.	Dependencies:
+o	Ensure pdftotext.exe is installed and the path in generate.php is correct.
+2. Frontend Setup (Flutter)
+1.	Install Dependencies:
+Bash
+flutter pub get
+2.	Configure API URL:
+o	Open lib/services/api_service.dart.
+o	Update baseUrl to match your local server IP:
+	Android Emulator: http://10.0.2.2/ai_flashcard_backend/api
+	Physical Device: http://YOUR_PC_IP/ai_flashcard_backend/api
+3.	Run the App:
+Bash
+flutter run
+________________________________________
+🔌 API Endpoints
+Method	Endpoint	Description
+POST	/auth/signup.php	Register a new user
+POST	/auth/login.php	Login and receive Auth Token
+POST	/flashcards/generate.php	Upload PDF and generate cards
+GET	/flashcards/sets.php	Get list of user's saved sets
+GET	/flashcards/get.php	Get Q&A pairs for a specific set
+________________________________________
+⚠️ Important Notes
+•	Security: The backend/config/ folder containing API keys is excluded from version control via .gitignore. You must create these files manually on your server.
+•	PDF Support: Currently supports digital PDFs (selectable text). Scanned image PDFs are not yet supported.
+________________________________________
+👤 Author
+Abhimanyu Singh
+Full Stack Developer (Flutter & PHP)
+
